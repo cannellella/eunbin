@@ -1026,6 +1026,7 @@ section.footer>div.footer_inner>ul>li:first-of-type{margin-bottom:30px; text-ali
     left:0; 
     width: 100%;  
     height:100%;
+    overflow: hidden;
 }
 /*vh 화면 전체크기  js 지정 */
 #container > div{width:100%; overflow: hidden;}
@@ -1413,7 +1414,7 @@ section.web_app > h3{margin:2% auto; color:#066FFD; font-size:80px; font-weight:
 #container > div > section.web_app > h3{letter-spacing:100px; transition:letter-spacing 2s ease-in-out;}
 #container > div.on > section.web_app>h3{letter-spacing:1px;}
 
-section.web_app > div{display: flex; flex-wrap:wrap; height:57%;
+section.web_app > div{display: flex; flex-wrap:wrap; height:70vh;
     background:radial-gradient(131.51% 150.36% at 17.05% 11.24%, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.00) 100%);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);backdrop-filter: blur(35px);} 
 /*웹앱 이벤트*/
