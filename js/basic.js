@@ -150,28 +150,48 @@ for(let h=0; h<lis.length; h++){
 아래 휠이 움직일때는 뒤에 content로 이동,
 이동하고 나서 sections.on , quick.on이 붙어라*/
 
-for(let i =0; i<contents.length; i++){
-  contents[i].addEventListener('wheel',e=>{
+// for(let i =0; i<contents.length; i++){
+//   contents[i].addEventListener('wheel',e=>{
 
-    if(e.deltaY < 0){
-      /*만약 e deltaY 가 음수0이라면 휠이 위로 올라간다면*/
-      let prev = e.currentTarget.previousElementSibling.offsetTop;
-      activation(prev)
-      activation2((i-1),contents)
-    }else if(e.deltaY>0){
-      //wheel scroll down 양수
-      let next = e.currentTarget.nextElementSibling.offsetTop;
-      activation(next)
-      activation2((i+1),contents)
+//     if(e.deltaY < 0){
+//       /*만약 e deltaY 가 음수0이라면 휠이 위로 올라간다면*/
+//       let prev = e.currentTarget.previousElementSibling.offsetTop;
+//       activation(prev)
+//       activation2((i-1),contents)
+//     }else if(e.deltaY>0){
+//       //wheel scroll down 양수
+//       let next = e.currentTarget.nextElementSibling.offsetTop;
+//       activation(next)
+//       activation2((i+1),contents)
 
-      // if(i===2){
-      //   activation(next-devHeight)
-      // }
+//       // if(i===2){
+//       //   activation(next-devHeight)
+//       // }
+//     }
+
+//   });
+// }
+for (let i = 0; i < contents.length; i++) {
+  contents[i].addEventListener('wheel', (e) => {
+    // 노트북 트랙패드에서 발생하는 이벤트에 대한 처리
+    if (e.deltaY === undefined) {
+      // Firefox 브라우저에서는 deltaY 대신 detail을 사용합니다.
+      e.deltaY = -e.detail;
     }
 
+    if (e.deltaY < 0) {
+      // 휠이 위로 올라갈 때
+      let prev = e.currentTarget.previousElementSibling.offsetTop;
+      activation(prev);
+      activation2(i - 1, contents);
+    } else if (e.deltaY > 0) {
+      // 휠이 아래로 내려갈 때
+      let next = e.currentTarget.nextElementSibling.offsetTop;
+      activation(next);
+      activation2(i + 1, contents);
+    }
   });
 }
-
 
 
 /*1번 함수 (scroll+for+if)문의 함수 (화살표식)*/
