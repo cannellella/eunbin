@@ -173,18 +173,14 @@ for(let h=0; h<lis.length; h++){
 // }
 for (let i = 0; i < contents.length; i++) {
   contents[i].addEventListener('wheel', (e) => {
-    // 노트북 트랙패드에서 발생하는 이벤트에 대한 처리
-    if (e.deltaY === undefined) {
-      // Firefox 브라우저에서는 deltaY 대신 detail을 사용합니다.
-      e.deltaY = -e.detail;
-    }
+    const delta = e.deltaY || -e.detail;
 
-    if (e.deltaY < 0) {
+    if (delta < 0) {
       // 휠이 위로 올라갈 때
       let prev = e.currentTarget.previousElementSibling.offsetTop;
       activation(prev);
       activation2(i - 1, contents);
-    } else if (e.deltaY > 0) {
+    } else if (delta > 0) {
       // 휠이 아래로 내려갈 때
       let next = e.currentTarget.nextElementSibling.offsetTop;
       activation(next);
